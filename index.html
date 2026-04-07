@@ -640,6 +640,22 @@
             margin: 0 auto;
         }
 
+        .project-card-full {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-card-full .project-image-wrapper {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .project-card-full .project-content-detailed {
+            text-align: left;
+        }
+
         .project-card-detailed {
             display: grid;
             grid-template-columns: 600px 1fr;
@@ -1784,6 +1800,38 @@
         <h2 class="section-title">Building AI-powered tools</h2>
         
         <div class="projects-grid-side">
+            <!-- Chorus - Full Width -->
+            <div class="project-card-full">
+                <div class="project-image-wrapper">
+                    <div class="project-carousel">
+                        <div class="project-carousel-track">
+                            <a href="https://chorus-steel.vercel.app/" target="_blank">
+                                <img src="chorus.png" alt="Chorus - Wisdom from 270 of the world's best product minds">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content-detailed">
+                    <h3 class="project-title-detailed">Chorus</h3>
+                    <p class="project-description-detailed">A RAG-powered knowledge system built on 270 Lenny's Podcast episodes. Search and get synthesized answers from the world's best product minds with direct YouTube timestamps. Features hybrid search, query rewriting, guest profiles, and structured synthesis that combines insights across multiple episodes.</p>
+                    <div class="project-tech">
+                        <div class="tech-label">Built with</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Voyage AI</span>
+                            <span class="tech-tag">Claude Sonnet</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">Claude Code</span>
+                        </div>
+                    </div>
+                    <div class="project-link">
+                        <a href="https://chorus-steel.vercel.app/" target="_blank">Visit project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Think Again -->
             <div class="project-card-detailed">
                 <div class="project-image-wrapper">
                     <div class="project-carousel">
