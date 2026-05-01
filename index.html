@@ -1,0 +1,2842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margil Gandhi - Product Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            color: #0a0a0a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250,250,250,0.8);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #0a0a0a;
+            text-decoration: none;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.5;
+        }
+
+        .nav-cta {
+            background: #0a0a0a;
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+
+        /* Hero - Centered animation with left/right content */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+        }
+
+        .hero-name {
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            line-height: 1;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            width: 100%;
+            opacity: 0;
+            animation: fadeInDown 1s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-name-part {
+            display: inline-block;
+        }
+
+        .hero-name-outline {
+            -webkit-text-stroke: 2px #0a0a0a;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        /* Animation section - centered */
+        .hero-animation-section {
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+        }
+
+        /* Bottom section - left and right content */
+        .hero-bottom-section {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+
+        .hero-text {
+            text-align: left;
+            padding-right: 2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-highlights {
+            text-align: left;
+            padding-left: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem 2rem;
+        }
+
+        .hero-highlight-item {
+            margin-bottom: 0;
+        }
+
+        .hero-highlight-label {
+            font-size: 13px;
+            color: #737373;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-highlight-value {
+            font-size: 18px;
+            color: #0a0a0a;
+            font-weight: 500;
+        }
+
+        .hero-tagline {
+            font-size: clamp(3rem, 8vw, 7rem);
+            color: #404040;
+            margin-bottom: 0;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            min-height: 2.2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .changing-text {
+            color: #0a0a0a;
+            font-weight: 600;
+            display: block;
+            min-height: 1.1em;
+            text-align: center;
+            position: relative;
+        }
+
+        .changing-text::after {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #0a0a0a;
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .hero-role {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            color: #0a0a0a;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            color: #737373;
+            line-height: 1.7;
+            margin-bottom: 0;
+            max-width: none;
+        }
+
+        .hero-cta-container {
+            margin-top: 2.5rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-image-container {
+            display: none;
+        }
+
+        .hero-socials {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #0a0a0a;
+            font-size: 20px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .social-link:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: rgba(0,0,0,0.12);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: #0a0a0a;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .hero-cta:hover {
+            background: #404040;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 3rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0 3rem;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60px;
+            width: 1px;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #0a0a0a;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #737373;
+            font-weight: 400;
+        }
+
+        /* Section */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-label {
+            font-size: 16px;
+            color: #737373;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            letter-spacing: -0.025em;
+            margin-bottom: 3rem;
+        }
+
+        /* Experience Cards - Animated like Palmer template */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.5) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .experience-card:hover::before {
+            opacity: 1;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .experience-header {
+            padding: 2.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .experience-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 2.5rem;
+            right: 2.5rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .experience-card.active .experience-header::after {
+            opacity: 1;
+        }
+
+        .experience-title-group {
+            flex: 1;
+        }
+
+        .experience-title-group h3 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+            transition: all 0.3s;
+        }
+
+        .experience-card:hover .experience-title-group h3 {
+            letter-spacing: -0.01em;
+        }
+
+        .experience-role {
+            color: rgba(255,255,255,0.6);
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .experience-toggle {
+            font-size: 2rem;
+            color: rgba(255,255,255,0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            margin-left: 2rem;
+        }
+
+        .experience-toggle:hover {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .experience-card.active .experience-toggle {
+            transform: rotate(45deg);
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .experience-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-card.active .experience-details {
+            max-height: 800px;
+        }
+
+        .experience-content {
+            padding: 0 2.5rem 2.5rem;
+            padding-top: 2rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid rgba(255,255,255,0.1);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-card.active .experience-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .experience-card.active .experience-item:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .experience-card.active .experience-item:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .experience-card.active .experience-item:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .experience-card.active .experience-item:nth-child(4) {
+            transition-delay: 0.25s;
+        }
+
+        .experience-card.active .experience-item:nth-child(5) {
+            transition-delay: 0.3s;
+        }
+
+        .experience-item:hover {
+            border-left-color: rgba(255,255,255,0.3);
+        }
+
+        .experience-item-title {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .experience-item-desc {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .experience-item-desc strong {
+            color: rgba(255,255,255,0.95);
+            font-weight: 500;
+        }
+
+        .expand-icon {
+            font-size: 2rem;
+            color: rgba(255,255,255,0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            margin-left: 2rem;
+        }
+
+        .expand-icon:hover {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .experience-card.active .expand-icon {
+            transform: rotate(45deg);
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Education specific styles for lists */
+        .experience-details p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            margin-left: 0;
+        }
+
+        .experience-details ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+            margin-left: 0;
+        }
+
+        .experience-details li {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .experience-details li strong {
+            color: rgba(255,255,255,0.95);
+        }
+
+        /* Align education details with role text */
+        #education .experience-details {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Projects Grid */
+        /* Projects Grid - Side by Side */
+        .projects-grid-side {
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card-detailed {
+            display: grid;
+            grid-template-columns: 600px 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-card-detailed:nth-child(even) {
+            grid-template-columns: 1fr 600px;
+        }
+
+        .project-card-detailed:nth-child(even) .project-image-wrapper {
+            order: 2;
+        }
+
+        .project-card-detailed:nth-child(even) .project-content-detailed {
+            order: 1;
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+            background: #fafafa;
+            aspect-ratio: 4 / 3;
+        }
+
+        .project-image-wrapper:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-carousel-track {
+            display: flex;
+            transition: transform 0.4s ease;
+            height: 100%;
+        }
+
+        .project-carousel-track a {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .project-carousel-track img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(10, 10, 10, 0.8);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            z-index: 10;
+            transition: all 0.3s;
+            opacity: 0;
+        }
+
+        .project-image-wrapper:hover .project-carousel-arrow {
+            opacity: 1;
+        }
+
+        .project-carousel-arrow:hover {
+            background: rgba(10, 10, 10, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .project-carousel-arrow.left {
+            left: 0.75rem;
+        }
+
+        .project-carousel-arrow.right {
+            right: 0.75rem;
+        }
+
+        .project-carousel-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .project-carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .project-carousel-dot.active {
+            background: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .project-content-detailed {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-title-detailed {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+        }
+
+        .project-description-detailed {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #404040;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #737373;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.4rem 0.9rem;
+            background: #fafafa;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: #0a0a0a;
+            font-weight: 500;
+        }
+
+        .project-link a {
+            color: #0a0a0a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .project-link a:hover {
+            opacity: 0.6;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Values Section - DNA Helix with Black Cards */
+        .values-section {
+            padding: 6rem 2rem;
+            background: #fafafa;
+            min-height: 150vh;
+            position: relative;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .values-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .dna-helix {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 2000px;
+        }
+
+        .helix-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 0.3s ease-out;
+        }
+
+        .value-card {
+            position: absolute;
+            width: 450px;
+            height: 280px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            left: 50%;
+            top: 50%;
+            margin-left: -225px;
+            margin-top: -140px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform-style: preserve-3d;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.5) 100%);
+        }
+
+        .value-title {
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-align: left;
+        }
+
+        .value-description {
+            font-size: 16px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* Carousel card positions */
+        .value-card:nth-child(1) {
+            transform: rotateY(0deg) translateZ(600px);
+        }
+        .value-card:nth-child(2) {
+            transform: rotateY(60deg) translateZ(600px);
+        }
+        .value-card:nth-child(3) {
+            transform: rotateY(120deg) translateZ(600px);
+        }
+        .value-card:nth-child(4) {
+            transform: rotateY(180deg) translateZ(600px);
+        }
+        .value-card:nth-child(5) {
+            transform: rotateY(240deg) translateZ(600px);
+        }
+        .value-card:nth-child(6) {
+            transform: rotateY(300deg) translateZ(600px);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: #fafafa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: #0a0a0a;
+            transform: translateY(-2px);
+        }
+
+        .skill-card-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #737373;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-card-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .skill-card-item {
+            font-size: 0.95rem;
+            color: #0a0a0a;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .skill-card-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #0a0a0a;
+        }
+
+        .skill-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-description {
+            font-size: 14px;
+            color: #737373;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-box {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            border: none;
+        }
+
+        .about-box p {
+            color: rgba(255,255,255,0.85);
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Speaking Engagements */
+        .speaking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .speaking-logo {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            font-weight: 500;
+            font-size: 18px;
+            color: #0a0a0a;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .speaking-logo:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Testimonials - Netflix Style */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: white;
+            overflow: hidden;
+        }
+
+        .testimonials-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        .testimonials-scroll-container {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0 6rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .testimonials-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #0a0a0a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 10;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-scroll-arrow:hover {
+            background: #404040;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .testimonial-scroll-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .testimonial-scroll-arrow.left {
+            left: 2rem;
+        }
+
+        .testimonial-scroll-arrow.right {
+            right: 2rem;
+        }
+
+        .testimonial-card {
+            min-width: 420px;
+            max-width: 420px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: rgba(0,0,0,0.1);
+        }
+
+        .testimonial-quote {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #404040;
+            flex: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #0a0a0a;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: #737373;
+        }
+
+        /* Recommendations */
+        .recommendations-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .recommendations-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .recommendation-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .recommendation-quote {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #404040;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .recommendation-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .recommendation-avatar {
+            width: 56px;
+            height: 56px;
+            background: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .recommendation-info {
+            flex: 1;
+        }
+
+        .recommendation-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0a0a0a;
+            margin-bottom: 0.25rem;
+        }
+
+        .recommendation-title {
+            font-size: 14px;
+            color: #737373;
+            line-height: 1.5;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .contact h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: #737373;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #0a0a0a;
+        }
+
+        .footer-copy {
+            color: #737373;
+            font-size: 15px;
+        }
+
+        /* Universities Grid - Simple cards like skills */
+        .universities-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .universities-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .universities-compact-list {
+            font-size: 1rem;
+            color: #404040;
+            line-height: 2;
+        }
+
+        .universities-compact-list span {
+            display: inline;
+        }
+
+        .universities-compact-list span:not(:last-child)::after {
+            content: ' • ';
+            color: #d4d4d4;
+            margin: 0 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-name {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+                flex-direction: column;
+                gap: 0;
+                margin-bottom: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: clamp(2rem, 10vw, 4rem);
+                min-height: 2.2em;
+            }
+
+            .hero-content {
+                gap: 2rem;
+            }
+
+            .hero-bottom-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text {
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .hero-highlights {
+                padding-left: 0;
+                text-align: center;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 1rem;
+                max-width: 400px;
+            }
+
+            .changing-text {
+                min-width: 200px;
+            }
+
+            .hero-socials {
+                right: 1rem;
+                gap: 0.75rem;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid-side {
+                gap: 3rem;
+            }
+
+            .project-card-detailed {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-card-detailed:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card-detailed:nth-child(even) .project-image-wrapper {
+                order: 1;
+            }
+
+            .project-card-detailed:nth-child(even) .project-content-detailed {
+                order: 2;
+            }
+
+            .project-title-detailed {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-scroll-arrow {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
+            }
+
+            .testimonial-scroll-arrow.left {
+                left: 0.5rem;
+            }
+
+            .testimonial-scroll-arrow.right {
+                right: 0.5rem;
+            }
+
+            .testimonials-track {
+                padding: 0 4rem;
+            }
+
+            .testimonial-card {
+                min-width: 340px;
+                max-width: 340px;
+            }
+
+            .dna-helix {
+                height: 500px;
+            }
+
+            .value-card {
+                width: 260px;
+                height: 120px;
+                margin-left: -130px;
+                padding: 1rem;
+            }
+
+            .value-card:nth-child(1) {
+                transform: rotateY(0deg) translateZ(300px) translateY(-180px);
+            }
+            .value-card:nth-child(2) {
+                transform: rotateY(60deg) translateZ(300px) translateY(-110px);
+            }
+            .value-card:nth-child(3) {
+                transform: rotateY(120deg) translateZ(300px) translateY(-40px);
+            }
+            .value-card:nth-child(4) {
+                transform: rotateY(180deg) translateZ(300px) translateY(30px);
+            }
+            .value-card:nth-child(5) {
+                transform: rotateY(240deg) translateZ(300px) translateY(100px);
+            }
+            .value-card:nth-child(6) {
+                transform: rotateY(300deg) translateZ(300px) translateY(170px);
+            }
+
+            .value-title {
+                font-size: 17px;
+            }
+
+            .value-description {
+                font-size: 12px;
+            }
+
+            .stats-bar {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+
+            .experience-header {
+                padding: 1.75rem;
+                align-items: flex-start;
+            }
+
+            .experience-title-group h3 {
+                font-size: 1.5rem;
+            }
+
+            .experience-role {
+                font-size: 14px;
+            }
+
+            .experience-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 1.5rem;
+                margin-left: 1rem;
+            }
+
+            .experience-content {
+                padding: 0 1.75rem 1.75rem;
+                padding-top: 1.5rem;
+            }
+
+            .experience-item {
+                padding-left: 1rem;
+            }
+
+            .experience-item-title {
+                font-size: 1rem;
+            }
+
+            .experience-item-desc {
+                font-size: 14px;
+            }
+
+            .stat-item {
+                padding: 0 1.5rem;
+                flex: 0 0 calc(50% - 1rem);
+            }
+
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+
+            .stat-item:not(:last-child):not(:nth-child(2))::after {
+                display: block;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .universities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonial-card {
+                min-width: 320px;
+                max-width: 320px;
+            }
+
+            .testimonials-track {
+                animation: scroll 100s linear infinite;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav>
+        <div class="nav-inner">
+            <div style="font-weight: 500;">Margil Gandhi</div>
+            <ul class="nav-links">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#values">Values</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <!-- Name at very top -->
+        <h1 class="hero-name">
+            <span class="hero-name-part hero-name-outline">MARGIL</span>
+            <span class="hero-name-part">GANDHI</span>
+        </h1>
+        
+        <div class="hero-content">
+            <!-- Animation section - centered -->
+            <div class="hero-animation-section">
+                <div class="hero-tagline">
+                    I build products that 
+                    <span class="changing-text" id="changing-text"></span>
+                </div>
+            </div>
+
+            <!-- Bottom section - role/description left, highlights right -->
+            <div class="hero-bottom-section">
+                <div class="hero-text">
+                    <div class="hero-role">Product Manager</div>
+                    <p class="hero-description">Building products that solve real problems. From strategy to scale, I help teams ship products users love.</p>
+                </div>
+
+                <div class="hero-highlights">
+                    <div class="hero-highlight-item">
+                        <div class="hero-highlight-label">Currently</div>
+                        <div class="hero-highlight-value">Goldman Sachs</div>
+                    </div>
+                    <div class="hero-highlight-item">
+                        <div class="hero-highlight-label">Experience</div>
+                        <div class="hero-highlight-value">6+ Years</div>
+                    </div>
+                    <div class="hero-highlight-item">
+                        <div class="hero-highlight-label">Location</div>
+                        <div class="hero-highlight-value">Richardson, TX</div>
+                    </div>
+                    <div class="hero-highlight-item">
+                        <div class="hero-highlight-label">Focus</div>
+                        <div class="hero-highlight-value">0→1 Products</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA button - centered -->
+            <div class="hero-cta-container">
+                <a href="#experience" class="hero-cta">View my work</a>
+            </div>
+        </div>
+        
+        <!-- Social links on the right -->
+        <div class="hero-socials">
+            <a href="https://linkedin.com/in/margilgandhi" target="_blank" class="social-link" title="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+                </svg>
+            </a>
+            <a href="mailto:margilgandhi19@gmail.com" class="social-link" title="Email">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">$280K</div>
+            <div class="stat-label">Revenue at Sailsmith</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">$340K</div>
+            <div class="stat-label">Saved at CXtec</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">2,500+</div>
+            <div class="stat-label">Students Mentored</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Speaking Engagements</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">6+</div>
+            <div class="stat-label">Years of Experience</div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">Where I've built products</h2>
+        
+        <div class="experience-list">
+            <div class="experience-card">
+                <div class="experience-header" onclick="toggleExperience(this)">
+                    <div class="experience-title-group">
+                        <h3>Goldman Sachs</h3>
+                        <div class="experience-role">Senior Analyst - Product & Automation [Marcus] • Sep 2024 - Present • Richardson, TX</div>
+                    </div>
+                    <div class="experience-toggle">+</div>
+                </div>
+                <div class="experience-details">
+                    <div class="experience-content">
+                        <div class="experience-item">
+                            <div class="experience-item-title">Business Process Mapping & Audit Readiness</div>
+                            <div class="experience-item-desc">Led end-to-end mapping of <strong>100+ Business Process Models</strong> across <strong>50+ processes</strong> using Signavio, improving audit readiness and process visibility. Identified inefficiencies and control gaps by partnering with Operations, Risk, and Compliance teams.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">Product-Driven Fraud Restriction Revamp</div>
+                            <div class="experience-item-desc">Co-led fraud restriction redesign with Product, Engineering, Legal, and Operations to <strong>reduce customer friction</strong> and operational risk. Conducted <strong>user research with fraud agents</strong>, introduced <strong>granular restriction buckets</strong>, and automated workflows to reduce manual intervention and improve resolution speed.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">AI-Powered Agent Copilot</div>
+                            <div class="experience-item-desc">Leading development of an <strong>AI-powered Copilot using RAG</strong> to enhance agent workflows, <strong>reduce handling time</strong>, and improve decision-making across payments, onboarding, and customer operations.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">Internal Platform Improvements</div>
+                            <div class="experience-item-desc">Defined and drove improvements to workflow platforms supporting payments and operations. Partnered with engineering to translate business problems into <strong>product requirements and feature roadmaps</strong>, monitoring performance via KPIs.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header" onclick="toggleExperience(this)">
+                    <div class="experience-title-group">
+                        <h3>Sailsmith</h3>
+                        <div class="experience-role">Co-Founder & Product Lead • Jan 2018 - Jan 2022 • India</div>
+                    </div>
+                    <div class="experience-toggle">+</div>
+                </div>
+                <div class="experience-details">
+                    <div class="experience-content">
+                        <div class="experience-item">
+                            <div class="experience-item-title">0→1 SaaS Platform Development</div>
+                            <div class="experience-item-desc">Defined product vision and multi-quarter roadmap for a <strong>0→1 SaaS platform</strong>, scaling revenue to <strong>$280K</strong> and achieving <strong>15% market share</strong> in the first year. Built Phase 1 focused on digitizing post-sales travel operations for educational institutions.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">Core Product & CRM Development</div>
+                            <div class="experience-item-desc">Designed <strong>CRM system</strong> to manage student data, payment tracking, installment plans, and transaction methods. Enabled institutions to submit booking requests through the platform, <strong>replacing fragmented communication</strong> and improving operational visibility.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">Product-Market Fit & Feature Prioritization</div>
+                            <div class="experience-item-desc">Translated customer workflows into product features, <strong>streamlining manual processes</strong> while maintaining flexibility for pricing and vendor negotiations. Prioritized features based on <strong>operational bottlenecks</strong>, delivering MVP aligned with business needs.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">Engineering Partnership & Iteration</div>
+                            <div class="experience-item-desc">Partnered with engineering to build and iterate on the platform based on <strong>user feedback and operational usage patterns</strong>, establishing foundation for self-serve SaaS evolution.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">Facebook India Small Business Grant</div>
+                            <div class="experience-item-desc">Recipient of Facebook India Small Business Grant in recognition of business impact and growth potential.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header" onclick="toggleExperience(this)">
+                    <div class="experience-title-group">
+                        <h3>CXtec</h3>
+                        <div class="experience-role">Lean Six Sigma Consultant • Jan 2023 - Aug 2023 • Syracuse, NY</div>
+                    </div>
+                    <div class="experience-toggle">+</div>
+                </div>
+                <div class="experience-details">
+                    <div class="experience-content">
+                        <div class="experience-item">
+                            <div class="experience-item-title">Process Optimization & Cost Savings</div>
+                            <div class="experience-item-desc">Applied <strong>Lean and DMAIC methodologies</strong> to improve warehouse processing efficiency, reducing turnaround time from <strong>90 to 50 days</strong> and preventing <strong>$140K in losses</strong>. Delivered total savings of <strong>$340K</strong> through systematic process improvements.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">Real-Time KPI Dashboards</div>
+                            <div class="experience-item-desc">Built <strong>real-time dashboards</strong> tracking inventory levels, processing time, and operational performance. Enabled <strong>executive decision-making</strong> through data visibility and performance monitoring.</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item-title">Cross-Functional Analysis</div>
+                            <div class="experience-item-desc">Identified operational bottlenecks and implemented <strong>data-driven solutions</strong> across warehouse and logistics operations, improving efficiency and throughput.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="section-label">Side Projects</div>
+        <h2 class="section-title">Building AI-powered tools</h2>
+        
+        <div class="projects-grid-side">
+            <div class="project-card-detailed">
+                <div class="project-image-wrapper">
+                    <div class="project-carousel">
+                        <div class="project-carousel-track" id="think-again-track">
+                            <a href="https://think-again-reflection.lovable.app" target="_blank">
+                                <img src="think-again.png" alt="Think Again - Better questions, not faster answers">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content-detailed">
+                    <h3 class="project-title-detailed">Think Again</h3>
+                    <p class="project-description-detailed">A premium desktop reflection app that asks hard questions across 6 themes—Self, Career, Relationships, Purpose, Identity, and Courage. Uses AI to generate follow-up questions that adapt to your answers, making reflection feel like a conversation with a close friend.</p>
+                    <div class="project-tech">
+                        <div class="tech-label">Built with</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">OpenAI GPT-4</span>
+                            <span class="tech-tag">Lovable</span>
+                            <span class="tech-tag">Edge Functions</span>
+                        </div>
+                    </div>
+                    <div class="project-link">
+                        <a href="https://think-again-reflection.lovable.app" target="_blank">Visit project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card-detailed">
+                <div class="project-image-wrapper">
+                    <div class="project-carousel">
+                        <div class="project-carousel-track" id="one-thing-track">
+                            <a href="https://gentle-aha-moment.lovable.app" target="_blank">
+                                <img src="one-thing-hero.png" alt="One Thing - A journey beyond the known">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content-detailed">
+                    <h3 class="project-title-detailed">One Thing</h3>
+                    <p class="project-description-detailed">A micro-learning app that teaches complex concepts in layers—simple, detailed, and expert. Pick from 12 topics, get AI-generated explanations paired with visual images, and learn one thing at a time. Dark cinematic UI keeps you focused.</p>
+                    <div class="project-tech">
+                        <div class="tech-label">Built with</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">OpenAI GPT-4</span>
+                            <span class="tech-tag">Pexels API</span>
+                            <span class="tech-tag">Lovable</span>
+                        </div>
+                    </div>
+                    <div class="project-link">
+                        <a href="https://gentle-aha-moment.lovable.app" target="_blank">Visit project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section" id="values">
+        <div class="values-container">
+            <div class="values-header">
+                <div class="section-label">Core Values</div>
+                <h2 class="section-title">What drives me</h2>
+            </div>
+            
+            <div class="dna-helix" id="dna-helix-values">
+                <div class="helix-track" id="helix-track-values">
+                    <div class="value-card">
+                        <h3 class="value-title">Authenticity</h3>
+                        <p class="value-description">Show up as myself—no masks, no pretense. Genuine connections matter.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <h3 class="value-title">Empathy First</h3>
+                        <p class="value-description">Genuinely care about people. High EQ is how I see the world.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <h3 class="value-title">Seek Truth, Not Validation</h3>
+                        <p class="value-description">Hard truths over comfortable lies. Deep conversations matter.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <h3 class="value-title">Non-Zero-Sum Mindset</h3>
+                        <p class="value-description">Success expands when shared. When I grow, I bring others along.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <h3 class="value-title">Learn by Doing</h3>
+                        <p class="value-description">Build, ship, break things, learn. The fastest way to understand.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <h3 class="value-title">Relentless Curiosity</h3>
+                        <p class="value-description">Question everything to understand deeply. What am I missing?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-label">Skills</div>
+        <h2 class="section-title">How I build products</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-card-title">AI & ML</div>
+                <div class="skill-card-items">
+                    <div class="skill-card-item">LLM Integration (GPT-4)</div>
+                    <div class="skill-card-item">AI Agents & Automation</div>
+                    <div class="skill-card-item">RAG Architectures</div>
+                    <div class="skill-card-item">Prompt Engineering</div>
+                    <div class="skill-card-item">Model Context Protocol</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-card-title">Product Craft</div>
+                <div class="skill-card-items">
+                    <div class="skill-card-item">0→1 Product Development</div>
+                    <div class="skill-card-item">Product Strategy & Vision</div>
+                    <div class="skill-card-item">User Research & Testing</div>
+                    <div class="skill-card-item">Feature Prioritization</div>
+                    <div class="skill-card-item">Technical Documentation</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-card-title">Engineering</div>
+                <div class="skill-card-items">
+                    <div class="skill-card-item">Python</div>
+                    <div class="skill-card-item">JavaScript & React</div>
+                    <div class="skill-card-item">SQL & Database Design</div>
+                    <div class="skill-card-item">REST APIs</div>
+                    <div class="skill-card-item">HTML/CSS</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-card-title">Data & Analytics</div>
+                <div class="skill-card-items">
+                    <div class="skill-card-item">Power BI Dashboards</div>
+                    <div class="skill-card-item">Product Analytics</div>
+                    <div class="skill-card-item">Performance Metrics</div>
+                    <div class="skill-card-item">A/B Testing</div>
+                    <div class="skill-card-item">Data-Driven Decisions</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-card-title">Tools & Platforms</div>
+                <div class="skill-card-items">
+                    <div class="skill-card-item">Lovable & Supabase</div>
+                    <div class="skill-card-item">Claude Code & Agent.ai</div>
+                    <div class="skill-card-item">OpenAI API</div>
+                    <div class="skill-card-item">GitHub Pages</div>
+                    <div class="skill-card-item">Payment Integration</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-card-title">Design & Collaboration</div>
+                <div class="skill-card-items">
+                    <div class="skill-card-item">Figma (UI/UX)</div>
+                    <div class="skill-card-item">Jira & Confluence</div>
+                    <div class="skill-card-item">Interactive Prototypes</div>
+                    <div class="skill-card-item">Wireframing</div>
+                    <div class="skill-card-item">Salesforce & CRM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+        <div class="section-label">Education</div>
+        <h2 class="section-title">Academic Background</h2>
+        
+        <div class="experience-list">
+            <div class="experience-card">
+                <div class="experience-header" onclick="toggleExperience(this)">
+                    <div class="experience-title-group">
+                        <h3>Syracuse University</h3>
+                        <div class="experience-role">M.S. in Engineering Management • Dec 2023 • Syracuse, NY</div>
+                    </div>
+                    <div class="expand-icon">+</div>
+                </div>
+                <div class="experience-details">
+                    <p><strong>Leadership Roles:</strong></p>
+                    <ul>
+                        <li>Graduate Student Mentor, Dean's Office</li>
+                        <li>President, Graduate Student Organization (ECS)</li>
+                        <li>Senator, Graduate Student Organization</li>
+                    </ul>
+                    <p><strong>Achievements:</strong></p>
+                    <ul>
+                        <li><strong>Syracuse LaunchPad x Deloitte Digital: Driving Digital Transformation</strong> - Secured 1st position among 12 teams, winning a $500 award and mentor sessions with a Deloitte PPMD</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header" onclick="toggleExperience(this)">
+                    <div class="experience-title-group">
+                        <h3>Mumbai University</h3>
+                        <div class="experience-role">Bachelor's in Electronics and Telecommunication Engineering • May 2017 • Mumbai, India</div>
+                    </div>
+                    <div class="expand-icon">+</div>
+                </div>
+                <div class="experience-details">
+                    <p><strong>Leadership & Activities:</strong></p>
+                    <ul>
+                        <li>Student Council - Publicity Coordinator (2014-2015)</li>
+                        <li>Student Council - Publicity Head (2015-2016)</li>
+                        <li>Student Council - Advisor (2016-2017)</li>
+                        <li>Class Representative (2013-2017)</li>
+                    </ul>
+                    <p><strong>Achievements:</strong></p>
+                    <ul>
+                        <li>Best Class of VIT (2013-2014)</li>
+                        <li>Winner of Inter-department Volleyball competition (2016-2017)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universities Section -->
+    <section class="universities-section">
+        <div class="universities-container">
+            <div class="section-label">Speaking Engagements</div>
+            <h2 class="section-title">Universities & Communities</h2>
+            
+            <div class="universities-compact-list">
+                <span>Texas A&M University</span>
+                <span>Duke University</span>
+                <span>Carlson School of Management</span>
+                <span>Purdue University</span>
+                <span>University of Illinois Urbana-Champaign</span>
+                <span>New York University</span>
+                <span>San Jose State University</span>
+                <span>University of Washington</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Beyond the resume</h2>
+        
+        <div class="about-box">
+            <p>I'm a systems thinker who wants to build meaningful things at scale—and bring people along while doing it. I don't just build products; I question whether the work is meaningful, whether it's actually helping people, and whether I'm creating leverage for others to grow faster too.</p>
+            
+            <p>I'm someone who's always hunting for the best local spots to eat, loves deep conversations about philosophy, life, purpose, and product, and genuinely cares about people. That combination of doing and reflecting is what drives me—I build things, then think deeply about whether they matter.</p>
+            
+            <p>I grew up in Mumbai, studied in Syracuse, and now call Richardson, TX home. My projects reflect how I think and learn—whether it's Think Again (a reflection tool) or mentoring 2,500+ students. I carry a non-zero-sum mindset: success isn't something to compete for, it's something to expand and share.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="testimonials-header">
+            <div class="section-label">Testimonials</div>
+            <h2 class="section-title">What people say</h2>
+        </div>
+        
+        <div class="testimonials-scroll-container">
+            <button class="testimonial-scroll-arrow left" onclick="scrollTestimonials('left')">←</button>
+            <button class="testimonial-scroll-arrow right" onclick="scrollTestimonials('right')">→</button>
+            <div class="testimonials-track" id="testimonials-track">
+                <!-- First set of testimonials -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">It was a pleasure attending your session at EMSA's Class to Industry: Career Insights Workshop. I truly appreciated your practical insights on application strategy, networking, and interview preparation. Thank you for sharing your experience and guidance.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sampada Suresh</div>
+                            <div class="testimonial-role">Workshop Attendee</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I got into Anthropic and Acorns. Thank you for genuinely helping me and listening to me on that call. When I was interviewing for these companies all I remember was one line from that call "Prepare for your interviews as if this is the last one". To be honest that sentence kept on popping up in my mind at every phase of interview. I kept reminding myself it's do or die this time!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SN</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sejal Nayak</div>
+                            <div class="testimonial-role">Anthropic & Acorns</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you, Margil! I've been following your posts and wanted to let you know you're doing an excellent job spreading knowledge. As an early career professional, I find your insights incredibly motivating and helpful. I really appreciate the support.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Rohan Shrestha</div>
+                            <div class="testimonial-role">Early Career Professional</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I'm Nikita from the MSBAIM program at Purdue University. I attended your session today and just wanted to share that it was incredibly insightful and timely. It was especially helpful for many of us as we begin exploring and reaching out for full-time opportunities. I really appreciated your practical advice and candid insights about navigating the process. Thank you again for taking the time to speak with us - it truly helped us.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nikita Chopde</div>
+                            <div class="testimonial-role">Purdue University</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I was truly impressed by your insights during the recent BCS session. Your approach to product management and innovation resonates deeply with my aspirations in supply chain management. I'd love to connect and exchange ideas!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CM</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Chetan Mani Chandra</div>
+                            <div class="testimonial-role">BCS Session Attendee</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I really appreciate your posts. They have been a big source of motivation for me as an international student. Thank you for taking the time to share such useful information.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NA</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nashra Ali</div>
+                            <div class="testimonial-role">International Student</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much Margil for your guidance! I really feel very motivated after talking to you. Now I'm super ready and focused for next 3-4 months to just work my best without thinking much about the outcome.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Shreya Madaan</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I just wanted to take a moment to personally thank you. When I reached out to you earlier this year, you took the time to speak with me, share advice, and genuinely support me. I wanted to let you know that after interning at a firm as a data analyst I've started a new full-time role as a Research & Reporting Analyst at East Texas A&M University. I truly implemented so much of the guidance you shared, and I want you to know that your support played a real part in helping me get here.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">VR</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Varshenne Reddi</div>
+                            <div class="testimonial-role">Research & Reporting Analyst, Texas A&M</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I just wanted to thank you again. It's been almost a month of applying, and although I haven't received an offer yet, I did reach the final round at one place even without sponsorship. One thing I truly held onto from our call was your reminder not to doubt myself. That really helped me stay grounded throughout the process. I genuinely appreciate all your support and the tips you shared.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Shruthi Cheguri</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I just wanted to say a big thank you for all your support during my job hunt! Your advice and encouragement really meant a lot and helped keep me motivated. I'm excited to share that I recently started working as a BI Analyst, and I couldn't have done it without the help of amazing connections like you. Let's definitely stay in touch.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RH</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Rakshanda Hedawoo</div>
+                            <div class="testimonial-role">BI Analyst</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much for taking the time to speak with me. I came away with a lot to think about after our conversation and your advice is definitely gonna help me a lot in my job search! Good luck with work and your future endeavors!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Panama Chowdary</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you again for sharing your time and expertise with our Minnesota Carlson students and alumni. Your advice is spot on and much appreciated. Always good to hear professionals in the industry reinforce things we are telling the students, and for them to hear it from someone outside our office.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">EC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Erin Chamlee</div>
+                            <div class="testimonial-role">Associate Director, University of Minnesota</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I wanted to thank you again for joining us last night. Students really appreciated your generosity for showing up, practical advice, and encouragement. I heard several comments afterward about how relatable you were, and about how helpful it was to get advice from someone at your level.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CB</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Chloe Benjamin</div>
+                            <div class="testimonial-role">Duke University</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much for the workshop! It was really informative and helpful. I'm pretty sure our students learned a lot from your experiences and wisdom. Let's keep in touch and hope you all the best with your work and life.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Dr. Shiyu Sun</div>
+                            <div class="testimonial-role">UIUC</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">It was really so nice to interact with you today at Texas A&M! Your candid insights and job strategies were very helpful to give me an idea of what I need to do moving forward, so thank you.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SB</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Smit Bhatt</div>
+                            <div class="testimonial-role">Texas A&M</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much for taking the time to speak with me on Friday. I enjoyed our conversation and learning more about your journey at Goldman Sachs, as well as your insights and advice on applying for jobs. I truly appreciate your advice and the encouragement you shared, it gave me a lot to think about as I explore my own career path. Wishing you continued success, and I hope we can stay in touch.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FI</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Farduus Ibraahim</div>
+                            <div class="testimonial-role">Career Mentee</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you for taking the time to talk with me and share your insights on the application process. It was really helpful, will try to use these filters and cold mail people. Hopefully something works out soon!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AJ</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Antara Joshi</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">As an international student I had a lot of doubts about networking and resumes. Your session at UMN Carlson school of management today clarified a lot of them. Thank you so much!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DL</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Dhairya Lunia</div>
+                            <div class="testimonial-role">UMN Carlson School of Management</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much for taking the time to speak with me today. I truly appreciated our conversation. Some of the points you shared really resonated with me, especially around hard work and getting locked in. I'm grateful for your openness and perspective. Looking forward to staying in touch!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">YJ</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Yash Jajoo</div>
+                            <div class="testimonial-role">Student</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I follow your posts on LinkedIn, they are very thoughtful and very well written. Just read your post on 'Just Start'. It's beautiful and really very inspiring.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">S</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Shivraj</div>
+                            <div class="testimonial-role">LinkedIn Follower</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I wanted to let you know that I landed a job! As a Product Analyst in New York Life. Thank you so much for being so kind with your time and support. Also love your content! Keep doing what you do, your content is like a breath of fresh air amongst the others' content!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NR</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Namrata Rane</div>
+                            <div class="testimonial-role">Product Analyst, New York Life</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Just wanted to give you an update. I finally got a job offer. I wanted to thank you from the bottom of my heart for being such a good mentor. I was really stressed in Feb/Mar. But at that time you were there to guide with a clear approach that helped me navigate. Your daily motivating posts also helped me a lot during these times.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SG</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sahil Gupta</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Hi - I just wanted to say thanks for being so kind and taking the time to help me out during my job search. I've landed a full-time role now — really appreciate your support! Hope to stay in touch! :)</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PM</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Priyadharsini Manivannan</div>
+                            <div class="testimonial-role">Full-time Role</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I got the verbal offer from GS, and am waiting for the official offer letter now. Thank you so much for all your help! Truly means the world to me.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NRG</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nainika Reddy Gaddam</div>
+                            <div class="testimonial-role">Goldman Sachs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you for sharing these and taking time to talk to me today. I genuinely enjoyed our conversation, it's rare to connect with someone who shares such aligned perspectives on purpose, growth and life.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PD</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Pratiksha Dange</div>
+                            <div class="testimonial-role">Professional</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thanks a lot for offering me help with job search strategies. I wanted to share some good news—I have joined PwC US as a Senior Associate (Financial services and Strategy), in New York City.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sarthak Soni</div>
+                            <div class="testimonial-role">Senior Associate, PwC US</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Happy to connect with you again! I have joined city of Charlotte. We connected before my final interview. Your tips helped me in my final round. Thanks a lot for your help!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RM</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Rasika Mahadeshwar</div>
+                            <div class="testimonial-role">City of Charlotte</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicate set for seamless infinite scroll -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">It was a pleasure attending your session at EMSA's Class to Industry: Career Insights Workshop. I truly appreciated your practical insights on application strategy, networking, and interview preparation. Thank you for sharing your experience and guidance.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sampada Suresh</div>
+                            <div class="testimonial-role">Workshop Attendee</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I got into Anthropic and Acorns. Thank you for genuinely helping me and listening to me on that call. When I was interviewing for these companies all I remember was one line from that call "Prepare for your interviews as if this is the last one". To be honest that sentence kept on popping up in my mind at every phase of interview. I kept reminding myself it's do or die this time!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SN</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sejal Nayak</div>
+                            <div class="testimonial-role">Anthropic & Acorns</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you, Margil! I've been following your posts and wanted to let you know you're doing an excellent job spreading knowledge. As an early career professional, I find your insights incredibly motivating and helpful. I really appreciate the support.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Rohan Shrestha</div>
+                            <div class="testimonial-role">Early Career Professional</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I'm Nikita from the MSBAIM program at Purdue University. I attended your session today and just wanted to share that it was incredibly insightful and timely. It was especially helpful for many of us as we begin exploring and reaching out for full-time opportunities. I really appreciated your practical advice and candid insights about navigating the process. Thank you again for taking the time to speak with us - it truly helped us.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nikita Chopde</div>
+                            <div class="testimonial-role">Purdue University</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I was truly impressed by your insights during the recent BCS session. Your approach to product management and innovation resonates deeply with my aspirations in supply chain management. I'd love to connect and exchange ideas!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CM</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Chetan Mani Chandra</div>
+                            <div class="testimonial-role">BCS Session Attendee</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I really appreciate your posts. They have been a big source of motivation for me as an international student. Thank you for taking the time to share such useful information.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NA</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nashra Ali</div>
+                            <div class="testimonial-role">International Student</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much Margil for your guidance! I really feel very motivated after talking to you. Now I'm super ready and focused for next 3-4 months to just work my best without thinking much about the outcome.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Shreya Madaan</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I just wanted to take a moment to personally thank you. When I reached out to you earlier this year, you took the time to speak with me, share advice, and genuinely support me. I wanted to let you know that after interning at a firm as a data analyst I've started a new full-time role as a Research & Reporting Analyst at East Texas A&M University. I truly implemented so much of the guidance you shared, and I want you to know that your support played a real part in helping me get here.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">VR</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Varshenne Reddi</div>
+                            <div class="testimonial-role">Research & Reporting Analyst, Texas A&M</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I just wanted to thank you again. It's been almost a month of applying, and although I haven't received an offer yet, I did reach the final round at one place even without sponsorship. One thing I truly held onto from our call was your reminder not to doubt myself. That really helped me stay grounded throughout the process. I genuinely appreciate all your support and the tips you shared.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Shruthi Cheguri</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I just wanted to say a big thank you for all your support during my job hunt! Your advice and encouragement really meant a lot and helped keep me motivated. I'm excited to share that I recently started working as a BI Analyst, and I couldn't have done it without the help of amazing connections like you. Let's definitely stay in touch.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RH</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Rakshanda Hedawoo</div>
+                            <div class="testimonial-role">BI Analyst</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much for taking the time to speak with me. I came away with a lot to think about after our conversation and your advice is definitely gonna help me a lot in my job search! Good luck with work and your future endeavors!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Panama Chowdary</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you again for sharing your time and expertise with our Minnesota Carlson students and alumni. Your advice is spot on and much appreciated. Always good to hear professionals in the industry reinforce things we are telling the students, and for them to hear it from someone outside our office.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">EC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Erin Chamlee</div>
+                            <div class="testimonial-role">Associate Director, University of Minnesota</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">I wanted to thank you again for joining us last night. Students really appreciated your generosity for showing up, practical advice, and encouragement. I heard several comments afterward about how relatable you were, and about how helpful it was to get advice from someone at your level.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CB</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Chloe Benjamin</div>
+                            <div class="testimonial-role">Duke University</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much for the workshop! It was really informative and helpful. I'm pretty sure our students learned a lot from your experiences and wisdom. Let's keep in touch and hope you all the best with your work and life.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Dr. Shiyu Sun</div>
+                            <div class="testimonial-role">UIUC</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">It was really so nice to interact with you today at Texas A&M! Your candid insights and job strategies were very helpful to give me an idea of what I need to do moving forward, so thank you.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SB</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Smit Bhatt</div>
+                            <div class="testimonial-role">Texas A&M</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you so much for taking the time to speak with me on Friday. I enjoyed our conversation and learning more about your journey at Goldman Sachs, as well as your insights and advice on applying for jobs. I truly appreciate your advice and the encouragement you shared, it gave me a lot to think about as I explore my own career path. Wishing you continued success, and I hope we can stay in touch.</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FI</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Farduus Ibraahim</div>
+                            <div class="testimonial-role">Career Mentee</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">Thank you for taking the time to talk with me and share your insights on the application process. It was really helpful, will try to use these filters and cold mail people. Hopefully something works out soon!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AJ</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Antara Joshi</div>
+                            <div class="testimonial-role">Job Seeker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">As an international student I had a lot of doubts about networking and resumes. Your session at UMN Carlson school of management today clarified a lot of them. Thank you so much!</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DL</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Dhairya Lunia</div>
+                            <div class="testimonial-role">UMN Carlson School of Management</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="recommendations-section" id="recommendations">
+        <div class="recommendations-container">
+            <div class="section-label">Recommendations</div>
+            <h2 class="section-title">What leaders say</h2>
+            
+            <div class="recommendation-card">
+                <div class="recommendation-quote">
+                    "Margil distinguished himself as an outstanding student who went above and beyond to onboard our incoming graduate students. He did this voluntarily and enhanced our incoming cohort's graduate student experience. His dedication, talent, and strategic engagement methods were readily apparent, and we created a graduate student recruiter position uniquely for him which is something we had not done before. Margil served (and continues to serve) as SU's College of Engineering and Computer Science Graduate Student Recruiter and Mentor. His work ethic, simply put, is unparalleled. In addition, since joining the team, we saw our largest cohort of incoming graduate students, and Margil played a large role in this. He conducts prospective and admitted student webinars, provides guidance to incoming students, and personalized feedback. Margil's initiative, attention to detail, and commitment is truly impressive. I have worked with a number of students throughout the years, and he will always stand out as the top student I have ever interacted with. I would not hesitate for a moment to recommend him to anyone."
+                </div>
+                <div class="recommendation-author">
+                    <div class="recommendation-avatar">MC</div>
+                    <div class="recommendation-info">
+                        <div class="recommendation-name">Mary Collier</div>
+                        <div class="recommendation-title">Executive Director, Syracuse University</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="recommendation-quote">
+                    "I am writing this letter to enthusiastically recommend Margil Gandhi for any position he may be pursuing in the field of Product Management. I have known Margil for over 1.5 years during his time at CXtec, where he displayed remarkable talent and dedication. During his tenure at CXtec, Margil showcased his exceptional analytical skills and attention to detail. These qualities were not only evident in his work but also in his ability to approach complex problems and find innovative solutions. Margil's capacity to grasp intricate product-related information and discern key insights was truly impressive. Margil's ability to listen attentively and apply processed information is a testament to his strong communication skills, a crucial trait for any aspiring product manager. He consistently exceeded my expectations by taking on challenging tasks and delivering results that demonstrated his commitment to excellence. Moreover, Margil's motivation and determination are noteworthy. He possesses a strong work ethic and consistently exhibits a high level of decision-making ability. These qualities make him well-suited for the dynamic and fast-paced world of Product Management. His ability to synthesize data, identify market trends, and translate them into actionable product strategies sets him apart as a standout candidate for Product Management roles. I have no doubt that Margil Gandhi has the potential to excel in a Product Management role. His analytical prowess, attention to detail, and proficiency in product-related tasks, and dedication to delivering outstanding results will undoubtedly contribute to the growth and success of any organization. I wholeheartedly recommend him and believe that he has a bright future in the field of Product Management."
+                </div>
+                <div class="recommendation-author">
+                    <div class="recommendation-avatar">JH</div>
+                    <div class="recommendation-info">
+                        <div class="recommendation-name">Jim Hazelton</div>
+                        <div class="recommendation-title">Director of Operations, CXtec</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2>Let's build something together</h2>
+        <a href="mailto:margilgandhi19@gmail.com" class="hero-cta">Get in touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-copy">© 2026 Margil Gandhi</div>
+        <div class="footer-links">
+            <a href="https://linkedin.com/in/margilgandhi" target="_blank">LinkedIn</a>
+            <a href="mailto:margilgandhi19@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Toggle experience cards
+        function toggleExperience(header) {
+            const card = header.parentElement;
+            const allCards = document.querySelectorAll('.experience-card');
+            
+            allCards.forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('active');
+                }
+            });
+            
+            card.classList.toggle('active');
+        }
+
+        // Count up animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16); // 60fps
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = formatStatNumber(target);
+                    clearInterval(timer);
+                } else {
+                    element.textContent = formatStatNumber(Math.floor(current));
+                }
+            }, 16);
+        }
+
+        function formatStatNumber(num) {
+            const statElement = document.querySelector('.stat-number');
+            const originalText = statElement.getAttribute('data-original');
+            
+            // Handle different formats
+            if (originalText.includes('$') && originalText.includes('K')) {
+                return '$' + num + 'K';
+            } else if (originalText.includes('+')) {
+                return num.toLocaleString() + '+';
+            } else if (originalText.includes('K')) {
+                return num + 'K';
+            }
+            return num.toString();
+        }
+
+        // Intersection Observer for stats animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        stat.setAttribute('data-original', text);
+                        
+                        // Extract number from text
+                        let target = parseInt(text.replace(/[^0-9]/g, ''));
+                        
+                        // Start animation
+                        stat.textContent = formatInitial(text);
+                        setTimeout(() => {
+                            animateStatNumber(stat, target, text);
+                        }, 100);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        function formatInitial(text) {
+            if (text.includes('$')) return '$0';
+            if (text.includes('+')) return '0+';
+            return '0';
+        }
+
+        function animateStatNumber(element, target, originalText) {
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = originalText;
+                    clearInterval(timer);
+                } else {
+                    if (originalText.includes('$') && originalText.includes('K')) {
+                        element.textContent = '$' + Math.floor(current) + 'K';
+                    } else if (originalText.includes('+')) {
+                        element.textContent = Math.floor(current).toLocaleString() + '+';
+                    } else {
+                        element.textContent = Math.floor(current) + '+';
+                    }
+                }
+            }, 16);
+        }
+
+        // Observe stats bar
+        const statsBar = document.querySelector('.stats-bar');
+        if (statsBar) {
+            statsObserver.observe(statsBar);
+        }
+
+        // Carousel scroll-controlled rotation for Values
+        const valuesSection = document.querySelector('.values-section');
+        const helixTrack = document.getElementById('helix-track-values');
+        
+        if (valuesSection && helixTrack) {
+            window.addEventListener('scroll', () => {
+                const rect = valuesSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const sectionHeight = valuesSection.offsetHeight;
+                
+                // Calculate scroll progress through the section
+                const scrollProgress = Math.max(0, Math.min(1, 
+                    (windowHeight - rect.top) / (windowHeight + sectionHeight)
+                ));
+                
+                // Rotate through 2 full rotations (720 degrees) - each card gets full view
+                // With 6 cards, each gets 60 degrees, so 720 degrees = seeing all cards twice
+                const rotation = scrollProgress * 720;
+                helixTrack.style.transform = `rotateY(${rotation}deg)`;
+            });
+        }
+
+        // Changing text animation for hero tagline
+        const changingTextElement = document.getElementById('changing-text');
+        const phrases = [
+            'solve real problems',
+            'scale from 0→1',
+            'empower users',
+            'create leverage',
+            'drive measurable impact'
+        ];
+        
+        let currentPhraseIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        
+        function typeEffect() {
+            const currentPhrase = phrases[currentPhraseIndex];
+            
+            if (isDeleting) {
+                // Deleting characters
+                changingTextElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+                typingSpeed = 50;
+                
+                if (currentCharIndex === 0) {
+                    isDeleting = false;
+                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                    typingSpeed = 500; // Pause before typing next phrase
+                }
+            } else {
+                // Typing characters
+                changingTextElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                typingSpeed = 100;
+                
+                if (currentCharIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    typingSpeed = 2000; // Pause at end of phrase
+                }
+            }
+            
+            setTimeout(typeEffect, typingSpeed);
+        }
+        
+        // Testimonials scroll navigation
+        function scrollTestimonials(direction) {
+            const track = document.getElementById('testimonials-track');
+            const cardWidth = 420; // Card width
+            const gap = 24; // 1.5rem gap
+            const scrollAmount = (cardWidth + gap) * 3; // Scroll 3 cards at a time
+            
+            if (direction === 'left') {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // Project carousel navigation
+        let projectCarouselStates = {
+            'one-thing': { currentIndex: 0, totalSlides: 3 }
+        };
+
+        function scrollProjectCarousel(projectId, direction) {
+            const state = projectCarouselStates[projectId];
+            const newIndex = state.currentIndex + direction;
+            
+            if (newIndex >= 0 && newIndex < state.totalSlides) {
+                goToProjectSlide(projectId, newIndex);
+            }
+        }
+
+        function goToProjectSlide(projectId, index) {
+            const track = document.getElementById(`${projectId}-track`);
+            const dots = document.getElementById(`${projectId}-dots`).children;
+            const state = projectCarouselStates[projectId];
+            
+            state.currentIndex = index;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Update dots
+            Array.from(dots).forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // Start the typing effect
+        if (changingTextElement) {
+            typeEffect();
+        }
+    </script>
+</body>
+</html>
